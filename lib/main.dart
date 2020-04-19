@@ -79,6 +79,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             _outputText = brain.setOperator('/');
                           });
                         },
+                        style: kButtonSymbolColorStyle,
                       ),
                       CalculatorButton(
                         value: '7',
@@ -120,6 +121,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             _outputText = brain.setOperator('×');
                           });
                         },
+                        style: kButtonSymbolColorStyle,
                       ),
                       CalculatorButton(
                         value: '4',
@@ -161,6 +163,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             _outputText = brain.setOperator('-');
                           });
                         },
+                        style: kButtonSymbolColorStyle,
                       ),
                       CalculatorButton(
                         value: '1',
@@ -203,6 +206,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             print(_outputText);
                           });
                         },
+                        style: kButtonSymbolColorStyle,
                       ),
                       CalculatorButton(
                         value: '0',
@@ -225,7 +229,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       CalculatorButton(
                         value: '=',
                         brain: brain,
-                        background: kPrimaryAccent1,
+                        background: kPrimaryAccent,
                         onPress: () {
                           setState(() {
                             _outputText = brain.getValue();
@@ -307,12 +311,13 @@ class CalculatorButton extends StatelessWidget {
   final Calculator brain;
   final Color background;
   final Function onPress;
+  final TextStyle style;
 
   CalculatorButton(
       {@required this.value,
       this.brain,
       this.onPress,
-      this.background = kSecondaryBackground});
+      this.background = kSecondaryBackground, this.style = kButtonTextStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -322,7 +327,7 @@ class CalculatorButton extends StatelessWidget {
       fillColor: this.background,
       child: Text(
         value,
-        style: kButtonTextStyle,
+        style: style,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
     );
